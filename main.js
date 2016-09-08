@@ -12,17 +12,19 @@ function drawSnake() {
   snakeCTX.clearRect(0, 0, 600, 600);
   snakeCTX.restore();
   snakeCTX.beginPath();
-  drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
-  snakeCTX.closePath();
+  
+
 
 
   if (positionNew == positionOld) {
     if (positionNew == 2 || positionNew == 4) {
       snakeStartX += varianceX;
       snakeEndX += varianceX;
+      drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
     } else if (positionNew == 1 || positionNew == 3) {
       snakeStartY += varianceY;
       snakeEndY += varianceY;
+      drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
     }
   } else if (positionOld == 2 && positionNew == 4) {
     var temp = snakeStartX;
@@ -31,6 +33,7 @@ function drawSnake() {
     varianceX = -2;
     snakeStartX += varianceX;
     snakeEndX += varianceX;
+    drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
   } else if (positionOld == 4 && positionNew == 2) {
     var temp = snakeStartX;
     snakeStartX = snakeEndX;
@@ -38,6 +41,7 @@ function drawSnake() {
     varianceX = 2;
     snakeStartX += varianceX;
     snakeEndX += varianceX;
+    drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
   } else if (positionOld == 1 && positionNew == 3) {
     var temp = snakeStartY;
     snakeStartY = snakeEndY;
@@ -45,6 +49,7 @@ function drawSnake() {
     varianceY = -2;
     snakeStartY += varianceY;
     snakeEndY += varianceY;
+    drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
   } else if (positionOld == 3 && positionNew == 1) {
     var temp = snakeStartY;
     snakeStartY = snakeEndY;
@@ -52,14 +57,16 @@ function drawSnake() {
     varianceY = 2;
     snakeStartY += varianceY;
     snakeEndY += varianceY;
-  }
+    drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
+  } 
   if (snakeEndX > 600 || snakeEndX < 0 || snakeStartY < 0 || snakeEndY > 600) {
     cancelAnimationFrame(requestID);
     snakeStartX = 100;
     snakeStartY = 100;
     snakeEndX = 200;
     snakeEndY = 100;
-    position = 2;
+    positionNew = 2;
+    positionOld = 2;
     varianceX = 2;
     drawSnake();
   }
@@ -88,7 +95,7 @@ var pointX;
 var pointY;
 var varianceX = 2;
 var varianceY = 2;
-var positionOld;
+var positionOld = 2;
 var positionNew = 2;
 drawSnake();
 drawBoard();

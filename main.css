@@ -1,14 +1,19 @@
 #boardCan {
-  border: 2px solid black;
+  border: 8px solid black;
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0
+  top: 10;
+  left: 10;
+  margin-left: 500px;
+  margin-top: 100px;
+  z-index: 0;
 }
 
 #snakeCan {
+  border: 10px solid black;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10;
+  left: 10;
+  margin-left: 500px;
+  margin-top: 100px;
   z-index: 1;
 }
