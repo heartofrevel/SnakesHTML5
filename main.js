@@ -58,7 +58,20 @@ function drawSnake() {
     snakeStartY += varianceY;
     snakeEndY += varianceY;
     drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
-  } 
+  } else if (positionOld == 2 && positionNew == 1) {
+    varianceY = 2;
+    if(snakeStartX == snakeEndX){
+      snakeEndY += varianceY;
+      snakeStartY += varianceY;    
+      drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeEndY, 7);
+    } else{
+      snakeStartX+=2;
+      snakeEndY+=2;
+      drawLine(snakeCTX, snakeStartX, snakeStartY, snakeEndX, snakeStartY, 7);
+      drawLine(snakeCTX, snakeEndX, snakeStartY, snakeEndX, snakeEndY, 7);
+    }
+  }
+
   if (snakeEndX > 600 || snakeEndX < 0 || snakeStartY < 0 || snakeEndY > 600) {
     cancelAnimationFrame(requestID);
     snakeStartX = 100;
